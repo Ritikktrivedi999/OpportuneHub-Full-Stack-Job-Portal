@@ -60,7 +60,7 @@ export const getAllJobs = async (req, res) => {
         const keyword = req.query.keyword || "";
         const query = {
             $or: [
-                { title: { $regex: keyword, $options: "i" } }, 
+                { title: { $regex: keyword, $options: "i" } },
                 { description: { $regex: keyword, $options: "i" } },
             ],
         };
