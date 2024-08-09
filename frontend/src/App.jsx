@@ -1,6 +1,6 @@
 import Home from "./components/Home.jsx"
 import Login from "./components/auth/Login"
-import  Signup from "./components/auth/Signup"
+import Signup from "./components/auth/Signup"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 
@@ -10,15 +10,15 @@ const appRouter = createBrowserRouter(
   [
     {
       path: "/",
-      element:<Home/>,
+      element: <Home />,
     },
     {
       path: "/login",
-      element:<Login/>,
+      element: <Login />,
     },
     {
       path: "/signup",
-      element: <Signup/>,
+      element: <Signup />,
     }
   ]
 )
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-   <RouterProvider router={appRouter}/>
+      <RouterProvider router={appRouter} />
     </>
   )
 }
