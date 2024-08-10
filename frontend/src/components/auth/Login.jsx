@@ -3,13 +3,13 @@ import { Label } from "../ui/label"
 import { Input } from "../ui/input"
 import { RadioGroup } from "../ui/radio-group"
 import { Button } from "../ui/button"
-import { Link, useNavigate, useDispatch } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { toast } from "sonner"
 import axios from "axios"
 import { USER_API_END_POINT } from "../utils/constant"
 import { setLoading } from "@/redux/authSlice"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Loader2 } from "lucide-react"
 
 
@@ -23,7 +23,7 @@ const Login = () => {
     });
     const { loading } = useSelector(store => store.auth);
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch;
 
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
