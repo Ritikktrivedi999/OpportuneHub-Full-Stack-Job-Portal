@@ -4,6 +4,8 @@ import Login from "./components/auth/Login"
 import About from "./components/Pages/About/About.jsx"
 import Signup from "./components/auth/Signup"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Browse from "./components/Pages/Browse/Browse.jsx"
+import Profile from "./components/Pages/Profile/Profile.jsx"
 
 
 
@@ -24,12 +26,24 @@ const appRouter = createBrowserRouter(
     },
     {
       path: "/jobs",
-      element:<Jobs/>,
+      element: <Jobs />,
 
     },
     {
       path: "/about",
-      element: <About/>
+      element: <About />
+    },
+    {
+
+      path: "/browse",
+      element: <Browse />
+
+    },
+    {
+
+      path: "/profile",
+      element: <Profile/>
+
     }
   ]
 )

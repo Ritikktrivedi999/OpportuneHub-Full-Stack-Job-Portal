@@ -2,7 +2,7 @@ import Navbar from "@/components/ui/shared/Navbar"
 import FilterCard from "./filterCard"
 import JobDetails from "./jobDetails"
 
-const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8]
+const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,15]
 const Jobs = () => {
     return (
         <div>

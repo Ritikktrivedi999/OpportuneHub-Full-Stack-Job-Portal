@@ -8,7 +8,7 @@ import { useState } from "react"
 import { toast } from "sonner"
 import axios from "axios"
 import { USER_API_END_POINT } from "../utils/constant"
-import { setLoading } from "@/redux/authSlice"
+import { setLoading, setUser } from "@/redux/authSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { Loader2 } from "lucide-react"
 
@@ -21,9 +21,9 @@ const Login = () => {
         password: "",
         role: "",
     });
-    const { loading } = useSelector(store => store.auth);
+    const { loading } = useSelector(store => store.auth || {});
     const navigate = useNavigate();
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
@@ -41,6 +41,7 @@ const Login = () => {
                 withCredentials: true
             })
             if (res.data.success) {
+                dispatch(setUser(res.data.user))
                 navigate("/")
                 toast.success(res.data.message)
             }
