@@ -1,6 +1,6 @@
 import Navbar from "@/components/ui/shared/Navbar"
-import FilterCard from "./FilterCard"
-import Job from "./Job"
+import FilterCard from "./filterCard"
+import JobDetails from "./jobDetails"
 
 const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8]
 const Jobs = () => {
@@ -19,7 +19,7 @@ const Jobs = () => {
                                     {
                                         jobsArray.map((job, index) => {
                                            return(<div key={index}>
-                                                <Job />
+                                                <JobDetails />
                                             </div>
                                            )
                                         })

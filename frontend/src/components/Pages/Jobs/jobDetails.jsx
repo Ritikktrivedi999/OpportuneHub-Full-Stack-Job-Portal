@@ -2,10 +2,12 @@
 import { Bookmark } from 'lucide-react'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-const Job = () => {
-    const navigate = useNavigate();
+
+
+const jobDetails = () => {
+   
+  ;
     // const jobId = "lsekdhjgdsnfvsdkjf";
 
     
@@ -38,11 +40,11 @@ const Job = () => {
                 <Badge className={'text-[#7209b7] font-bold'} variant="ghost">Salary LPA</Badge>
             </div>
             <div className='flex items-center gap-4 mt-4'>
-                <Button onClick={()=> navigate()} variant="outline">Details</Button>
+                <Button  variant="outline">Details</Button>
                 <Button className="bg-[#7209b7]">Save For Later</Button>
             </div>
         </div>
     )
 }
 
-export default Job
+export default jobDetails
