@@ -42,7 +42,7 @@ const appRouter = createBrowserRouter(
     {
 
       path: "/profile",
-      element: <Profile/>
+      element: <Profile />
 
     }
   ]

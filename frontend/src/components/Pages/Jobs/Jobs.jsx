@@ -2,7 +2,7 @@ import Navbar from "@/components/ui/shared/Navbar"
 import FilterCard from "./filterCard"
 import JobDetails from "./jobDetails"
 
-const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14,15]
+const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 const Jobs = () => {
     return (
         <div>
@@ -18,10 +18,10 @@ const Jobs = () => {
                                 <div className="grid grid-cols-3  gap-4 md:grid-cols-2 lg:grid-cols" >
                                     {
                                         jobsArray.map((job, index) => {
-                                           return(<div key={index}>
+                                            return (<div key={index}>
                                                 <JobDetails />
                                             </div>
-                                           )
+                                            )
                                         })
                                     }
 
