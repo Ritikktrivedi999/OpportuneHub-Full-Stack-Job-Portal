@@ -4,8 +4,11 @@ import { Avatar, AvatarImage } from "../avatar";
 import { Button } from "../button";
 import { LogOut, User2 } from "lucide-react";
 import { useSelector } from "react-redux";
+
 const Navbar = () => {
-    const user = useSelector(store => store.auth || {});
+   const {user} = useSelector(store => store.auth || {});
+    const isAuthenticated = Boolean(user); 
+
     return (
         <div className='bg-white'>
             <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
@@ -21,30 +24,30 @@ const Navbar = () => {
                     </ul>
 
                     {
-                        !user ? (
+                        !isAuthenticated ? (
                             <div className='flex items-center gap-2'>
                                 <Link to="/login"><Button variant="outline">Login</Button></Link>
                                 <Link to="/signup"><Button className="bg-[#7948ce] hover:bg-[#4d09c4] ">Signup</Button></Link>
                             </div>
                         ) : (
-                            <Popover >
+                            <Popover>
                                 <PopoverTrigger asChild>
                                     <Avatar className="cursor-pointer">
-                                        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                                        <AvatarImage src={user?.avatarUrl || "https://github.com/shadcn.png"} alt={user?.name || "User"} />
                                     </Avatar>
                                 </PopoverTrigger>
                                 <PopoverContent className="w-83">
-                                    <div>
+                                    <div className="flex items-center gap-2">
                                         <Avatar className="cursor-pointer">
-                                            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                                            <AvatarImage src={user?.avatarUrl || "https://github.com/shadcn.png"} alt={user?.fullname || "User"} />
                                         </Avatar>
                                         <div>
-                                            <h4 className="font-medium">Ritik Trivedi</h4>
-                                            <p className="text-sm text-muted-foreground">Welcome {user.name}</p>
+                                            <h4 className="font-medium">{user.fullname}</h4>
+                                            <p className="text-sm text-muted-foreground">Welcome, {user.fullname}</p>
                                         </div>
                                     </div>
                                     <div className="flex flex-col my-2 text-gray-600">
-                                        <div className="flex w-fit items-center gap-2 cursor-pointer ">
+                                        <div className="flex w-fit items-center gap-2 cursor-pointer">
                                             <User2 />
                                             <Button variant="link"><Link to="/profile">View Profile</Link></Button>
                                         </div>
@@ -52,9 +55,7 @@ const Navbar = () => {
                                             <LogOut />
                                             <Button variant="link">Logout</Button>
                                         </div>
-                                        <div />
                                     </div>
-
                                 </PopoverContent>
                             </Popover>
                         )
@@ -62,9 +63,8 @@ const Navbar = () => {
 
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
 
 export default Navbar;

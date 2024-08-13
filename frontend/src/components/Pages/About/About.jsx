@@ -1,8 +1,11 @@
+import Navbar from "@/components/ui/shared/Navbar"
 
 
 const About = () => {
   return (
-    <div>About</div>
+    <div>
+      <Navbar/>
+    </div>
   )
 }
 

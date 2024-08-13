@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, password, role } = req.body;
+
     if (!fullname || !email || !password || !phoneNumber || !role) {
       return res.status(400).json({
         message: "Please fill all the fields",
@@ -104,6 +105,7 @@ export const logout = async (req, res) => {
 export const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
+    
 
     const file = req.file;
     // const fileUri = getDataUri(file);
