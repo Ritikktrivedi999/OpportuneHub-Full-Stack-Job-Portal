@@ -10,13 +10,13 @@ import UpdateProfileDialog from "./UpdateProfileDialog";
 import AppliedJobTables from "./AppliedJobTables";
 
 
- 
+
 
 const Profile = () => {
     const [open, setOpen] = useState(false);
     const {user} = useSelector(store => store.auth);
     const handleDialogOpen = () => {
-        setOpen(true); 
+        setOpen(true);
     };
 
     return (
@@ -26,8 +26,8 @@ const Profile = () => {
                 <div className='flex justify-between'>
                     <div className='flex items-center gap-4'>
                         <Avatar className="h-24 w-24">
-                        <AvatarImage
-                             src={user?.avatarUrl || "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"} alt="profile" 
+                            <AvatarImage
+                                src={user?.profile?.profilePhoto} alt="profile"
                             />
                         </Avatar>
                         <div>
@@ -56,10 +56,10 @@ const Profile = () => {
                 <div className='grid w-full max-w-sm items-center gap-1.5'>
                     <Label className="text-md font-bold">Resume</Label>
                     {user?.profile?.resume ? (
-                        <a 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            href={user?.profile?.resume} 
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={user?.profile?.resume}
                             className='text-blue-500 w-full hover:underline cursor-pointer'>
                             {user?.profile?.resumeOriginalName || "View Resume"}
                         </a>
