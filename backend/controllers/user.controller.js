@@ -109,6 +109,10 @@ export const logout = async (req, res) => {
     console.log(error);
   }
 };
+
+
+
+
 export const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
@@ -118,7 +122,18 @@ let cloudResponse;
     const file = req.file;
     if (file) {
       const fileUri = getDataUri(file);
-      cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+      cloudResponse = await cloudinary.uploader.upload(fileUri.content, {
+        resource_type: "raw",
+        format: 'pdf',
+    }, function(error, result) {
+        if (error) {
+            console.error("Error during upload:", error);
+            // Handle specific error codes or messages
+        } else {
+            console.log("Upload successful:", result.secure_url);
+        }
+    });
+const cloudinaryUrl = cloudResponse.secure_url;
   }
 
     let skillsArray;

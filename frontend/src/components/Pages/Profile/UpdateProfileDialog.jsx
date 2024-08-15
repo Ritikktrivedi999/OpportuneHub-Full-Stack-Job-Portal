@@ -38,7 +38,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             }
 
             // Optional: Check file size (e.g., limit to 5MB)
-            const maxSizeInMB = 5;
+            const maxSizeInMB = 10;
             if (file.size > maxSizeInMB * 1024 * 1024) {
                 return alert(`File size exceeds the ${maxSizeInMB}MB limit.`);
             }
