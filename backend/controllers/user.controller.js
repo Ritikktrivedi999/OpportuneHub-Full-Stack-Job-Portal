@@ -14,10 +14,12 @@ export const register = async (req, res) => {
         success: false,
       });
     }
-
     const file = req.file;
-    const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    let cloudResponse;
+    if (file) {
+      const fileUri = getDataUri(file);
+      cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    }
 
     const user = await User.findOne({ email });
     if (user) {
@@ -34,6 +36,9 @@ export const register = async (req, res) => {
       password: hashedPassword,
       phoneNumber,
       role,
+      profile: {
+        profilePhoto: cloudResponse ? cloudResponse.secure_url : null
+      }
     });
     return res.status(201).json({
       message: "Account created successfully.",
@@ -41,7 +46,18 @@ export const register = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    if (error.message === 'File format is not supported') {
+      return res.status(400).json({
+        message: error.message,
+        code: 'show_original_unsupported_file_format',
+        success: false,
+      });
   }
+  return res.status(500).json({
+    message: "Server error.",
+    success: false,
+  });
+}
 };
 
 export const login = async (req, res) => {
@@ -118,22 +134,11 @@ export const updateProfile = async (req, res) => {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
 
 //cloudinary
+const file = req.file;
 let cloudResponse;
-    const file = req.file;
     if (file) {
       const fileUri = getDataUri(file);
-      cloudResponse = await cloudinary.uploader.upload(fileUri.content, {
-        resource_type: "raw",
-        format: 'pdf',
-    }, function(error, result) {
-        if (error) {
-            console.error("Error during upload:", error);
-            // Handle specific error codes or messages
-        } else {
-            console.log("Upload successful:", result.secure_url);
-        }
-    });
-const cloudinaryUrl = cloudResponse.secure_url;
+      cloudResponse = await cloudinary.uploader.upload(fileUri.content);
   }
 
     let skillsArray;
@@ -180,9 +185,16 @@ const cloudinaryUrl = cloudResponse.secure_url;
     });
   } catch (error) {
     console.error(error.stack);
-    return res.status(500).json({
-        message: "An error occurred while updating the profile.",
+    if (error.message === 'File format is not supported') {
+      return res.status(400).json({
+        message: error.message,
+        code: 'show_original_unsupported_file_format',
         success: false,
-    });
+      });
 }
-};
+return res.status(500).json({
+  message: "An error occurred while updating the profile.",
+  success: false,
+});
+}
+}
