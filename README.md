@@ -13,3 +13,9 @@
 ##Job Page - job details page
 ![Screenshot 2024-08-14 085354](https://github.com/user-attachments/assets/ed3e0e18-8bb5-4cfb-86e8-14ca871652e3)
 
+##Browse page 
+![Screenshot 2024-08-14 085426](https://github.com/user-attachments/assets/0184cdd3-2631-46a7-a6e4-3e40cca8908a)
+
+#Profile popover
+![Screenshot 2024-08-14 085547](https://github.com/user-attachments/assets/951b0fb5-3392-4ca9-8281-d851414f74cd)
+
