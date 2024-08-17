@@ -7,3 +7,9 @@
 ##Home Page
 ![dile](https://github.com/user-attachments/assets/6f4022bb-a16a-426e-a9e4-4294b8032033)
 
+##Job Page
+![Screenshot 2024-08-14 085343](https://github.com/user-attachments/assets/a0996b3a-592f-4611-a468-e7d22c162d3f)
+
+##Job Page - job details page
+![Screenshot 2024-08-14 085354](https://github.com/user-attachments/assets/ed3e0e18-8bb5-4cfb-86e8-14ca871652e3)
+
