@@ -133,13 +133,13 @@ export const updateProfile = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
 
-//cloudinary
-const file = req.file;
-let cloudResponse;
+    //cloudinary
+    const file = req.file;
+    let cloudResponse;
     if (file) {
       const fileUri = getDataUri(file);
       cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-  }
+    }
 
     let skillsArray;
     if (skills) {
@@ -191,10 +191,10 @@ let cloudResponse;
         code: 'show_original_unsupported_file_format',
         success: false,
       });
-}
-return res.status(500).json({
-  message: "An error occurred while updating the profile.",
-  success: false,
-});
-}
+    }
+    return res.status(500).json({
+      message: "An error occurred while updating the profile.",
+      success: false,
+    });
+  }
 }
