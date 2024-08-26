@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Browse from "./components/Pages/Browse/Browse.jsx"
 import Profile from "./components/Pages/Profile/Profile.jsx"
 import JobDescription from "./components/Pages/Jobs/JobDescription.jsx"
+import Companies from "./components/admin/Companies.jsx"
+import CreateCompany from "./components/admin/CreateCompany.jsx"
+import CompanySetup from "./components/admin/CompanySetup.jsx"
 
 
 
@@ -52,6 +55,22 @@ const appRouter = createBrowserRouter(
       element: <Profile />
 
     },
+
+  // For Admin Routes    
+  {
+    path: "/admin/companies",
+    element: <Companies/>,
+  },
+  {
+    path: "/admin/companies/create",
+    element: <CreateCompany/>,
+    },
+    {
+      path: "/admin/companies/:id",
+      element: <CompanySetup/>,
+      },
+   
+
     
   ]
 )
