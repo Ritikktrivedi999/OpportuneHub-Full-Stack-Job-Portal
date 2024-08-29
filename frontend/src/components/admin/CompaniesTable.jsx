@@ -2,12 +2,12 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Avatar, AvatarImage } from '../ui/avatar'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Edit2, MoreHorizontal } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 
 const CompaniesTable = () => {
-  const navigate= useNavigate();
-   
+    const { companies } = useSelector(store => store.company)
+
     return (
         <div>
             <Table>
@@ -21,15 +21,16 @@ const CompaniesTable = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                 
-                            <tr>
+                    {
+                        companies?.map((company) => (
+                            <tr key={company._id}>
                                 <TableCell>
                                     <Avatar>
-                                        <AvatarImage src=""/>
+                                        <AvatarImage src={company.logo} />
                                     </Avatar>
                                 </TableCell>
-                                <TableCell>Company Name</TableCell>
-                                <TableCell>26-08-24</TableCell>
+                                <TableCell>{company.name}</TableCell>
+                                <TableCell>{company.createdAt.split("T")[0]}</TableCell>
                                 <TableCell className="text-right cursor-pointer">
                                     <Popover>
                                         <PopoverTrigger><MoreHorizontal /></PopoverTrigger>
@@ -42,6 +43,11 @@ const CompaniesTable = () => {
                                     </Popover>
                                 </TableCell>
                             </tr>
+
+                        )
+                        )
+                    }
+
                 </TableBody>
             </Table>
         </div>
