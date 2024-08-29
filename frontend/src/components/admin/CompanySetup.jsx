@@ -24,22 +24,10 @@ const CompanySetup = () => {
   });
   
   const { singleCompany } = useSelector((store) => store.company);
-  console.log(singleCompany)
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (singleCompany) {
-      setInput({
-        name: singleCompany.name || "",
-        description: singleCompany.description || "",
-        website: singleCompany.website || "",
-        location: singleCompany.location || "",
-        file: singleCompany.file || null,
-      });
-    }
-  }, [singleCompany]);
-
+  
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
@@ -70,6 +58,7 @@ const CompanySetup = () => {
           },
           withCredentials: true,
         }
+  
       );
       if (res.data.success) {
         toast.success(res.data.message);
@@ -77,11 +66,24 @@ const CompanySetup = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.res?.data?.message);
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    if (singleCompany) {
+      setInput({
+        name: singleCompany.name || "",
+        description: singleCompany.description || "",
+        website: singleCompany.website || "",
+        location: singleCompany.location || "",
+        file: singleCompany.file || null,
+      });
+    }
+  }, [singleCompany]);
+
 
   return (
     <div>
@@ -141,7 +143,7 @@ const CompanySetup = () => {
               <Input
                 type="file"
                 accept="image/*"
-                name="logo"
+                name="file"
                 onChange={changeFileHandler}
               />
             </div>

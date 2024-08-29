@@ -69,24 +69,30 @@ export const getCompanyById = async (req, res) => {
 export const updateCompany = async (req, res) => {
   try {
     const { name, description, website, location } = req.body;
-    const file = req.file;
-    //cloudinary implementation
+    let updateData = { name, description, website, location };
 
-    const updateData = { name, description, website, location };
+    if (req.file) {
+      // Assuming you're using Cloudinary or similar service
+      const fileUrl = req.file.path; // This is just an example
+      updateData.logo = fileUrl;
+    }
+
     const company = await Company.findByIdAndUpdate(req.params.id, updateData, {
       new: true,
     });
+
     if (!company) {
-      return res
-        .status(404)
-        .json({ message: "Company not found", success: false });
+      return res.status(404).json({ message: "Company not found", success: false });
     }
 
     return res.status(200).json({
       message: "Company information updated",
       success: true,
+      company,
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: "Server error", success: false });
   }
 };
+
