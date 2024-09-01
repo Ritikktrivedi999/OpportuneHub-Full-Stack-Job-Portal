@@ -10,6 +10,8 @@ import JobDescription from "./components/Pages/Jobs/JobDescription.jsx"
 import Companies from "./components/admin/Companies.jsx"
 import CreateCompany from "./components/admin/CreateCompany.jsx"
 import CompanySetup from "./components/admin/CompanySetup.jsx"
+import AdminJobs from "./components/admin/AdminJobs.jsx"
+import PostJob from "./components/admin/PostJob.jsx"
 
 
 
@@ -36,7 +38,7 @@ const appRouter = createBrowserRouter(
     //Route inside Job Page
     {
       path: "/description/:id",
-      element:<JobDescription/>,
+      element: <JobDescription />,
 
     },
     {
@@ -56,22 +58,30 @@ const appRouter = createBrowserRouter(
 
     },
 
-  // For Admin Routes    
-  {
-    path: "/admin/companies",
-    element: <Companies/>,
-  },
-  {
-    path: "/admin/companies/create",
-    element: <CreateCompany/>,
+    // For Admin Routes    
+    {
+      path: "/admin/companies",
+      element: <Companies />,
+    },
+    {
+      path: "/admin/companies/create",
+      element: <CreateCompany />,
     },
     {
       path: "/admin/companies/:id",
-      element: <CompanySetup/>,
-      },
-   
-
+      element: <CompanySetup />,
+    },
+    {
+      path: "/admin/jobs",
+      element: <AdminJobs />,
+    },
+    {
+      path: "/admin/create",
+      element: <PostJob/>,
+    },
     
+
+
   ]
 )
 

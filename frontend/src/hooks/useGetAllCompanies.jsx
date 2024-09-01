@@ -25,7 +25,7 @@ const useGetCompanyById = () => {
     };
     
      fetchCompanies();
-  }, []);
+  }, [dispatch]);
 };
 
 export default useGetCompanyById;

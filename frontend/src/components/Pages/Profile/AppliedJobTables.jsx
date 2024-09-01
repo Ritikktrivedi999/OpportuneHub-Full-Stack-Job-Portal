@@ -1,9 +1,11 @@
-import { Badge } from "@/components/ui/badge";
-import { Table,TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow  } from "@/components/ui/table"
 
+import { Badge } from '@/components/ui/badge';
+import { Table,TableCaption,TableHead,TableRow,TableHeader,TableBody,TableCell } from '@/components/ui/table';
 
-const AppliedJobTables = () => {
-   
+import { useSelector } from 'react-redux'
+
+const AppliedJobTable = () => {
+    const {allAppliedJobs} = useSelector(store=>store.job);
     return (
         <div>
             <Table>
@@ -18,12 +20,12 @@ const AppliedJobTables = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        [1,2,3,4,5,6].length <= 0 ? <span>You haven`t applied any job yet.</span> : [1,2,3,4,5.6].map(() => (
-                            <TableRow key="">
-                                <TableCell>12-08-2024</TableCell>
-                                <TableCell>Full Stack Devloper</TableCell>
-                                <TableCell>Google</TableCell>
-                                <TableCell className="text-right"><Badge className={`${[1,2,3,4,5,6].status === "rejected" ? 'bg-red-400' : [1,2,3,4,5,6].status === 'pending' ? 'bg-gray-400' : 'bg-green-400'}`}>Selected</Badge></TableCell>
+                        allAppliedJobs.length <= 0 ? <span>You haven`t applied any job yet.</span> : allAppliedJobs.map((appliedJob) => (
+                            <TableRow key={appliedJob._id}>
+                                <TableCell>{appliedJob?.createdAt?.split("T")[0]}</TableCell>
+                                <TableCell>{appliedJob.job?.title}</TableCell>
+                                <TableCell>{appliedJob.job?.company?.name}</TableCell>
+                                <TableCell className="text-right"><Badge className={`${appliedJob?.status === "rejected" ? 'bg-red-400' : appliedJob.status === 'pending' ? 'bg-gray-400' : 'bg-green-400'}`}>{appliedJob.status.toUpperCase()}</Badge></TableCell>
                             </TableRow>
                         ))
                     }
@@ -33,4 +35,4 @@ const AppliedJobTables = () => {
     )
 }
 
-export default AppliedJobTables;
+export default AppliedJobTable
