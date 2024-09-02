@@ -1,11 +1,9 @@
-import Navbar from "@/components/ui/shared/Navbar"
-import FilterCard from "./filterCard"
-import JobDetails from "./jobDetails"
-import { useSelector } from "react-redux"
-import { useEffect, useState } from "react"
-import {motion} from "framer-motion"
-
-
+import Navbar from "@/components/ui/shared/Navbar";
+import FilterCard from "./filterCard";
+import JobDetails from "./jobDetails";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
@@ -16,24 +14,30 @@ const Jobs = () => {
             const filteredJobs = allJobs.filter((job) => {
                 return job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
                     job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-                    job.location.toLowerCase().includes(searchedQuery.toLowerCase())
-            })
-            setFilterJobs(filteredJobs)
+                    job.location.toLowerCase().includes(searchedQuery.toLowerCase());
+            });
+            
+            setFilterJobs(filteredJobs);
         } else {
-            setFilterJobs(allJobs)
+            setFilterJobs(allJobs);
         }
     }, [allJobs, searchedQuery]);
+
+    if (!Array.isArray(filterJobs)) {
+        console.error("filterJobs is not an array");
+        return <div>Error: Jobs data is not available</div>;
+    }
 
     return (
         <div>
             <Navbar />
             <div className='max-w-7xl mx-auto mt-5'>
                 <div className='flex gap-5'>
-                    <div className='w-20%'>
+                    <div className='w-1/5'>
                         <FilterCard />
                     </div>
                     {
-                        filterJobs.length <= 0 ? <span>Job not found</span> : (
+                        filterJobs.length === 0 ? <span>Job not found</span> : (
                             <div className='flex-1 h-[88vh] overflow-y-auto pb-5'>
                                 <div className='grid grid-cols-3 gap-4'>
                                     {
@@ -54,10 +58,8 @@ const Jobs = () => {
                     }
                 </div>
             </div>
-
-
         </div>
-    )
-}
+    );
+};
 
-export default Jobs
+export default Jobs;

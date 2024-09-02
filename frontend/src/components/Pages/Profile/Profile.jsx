@@ -7,14 +7,16 @@ import { Contact, Mail, Pen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import UpdateProfileDialog from "./UpdateProfileDialog";
-import AppliedJobTables from "./AppliedJobTables";
+import useGetAppliedJobs from "@/hooks/useGetAppliedJobs";
+import AppliedJobTable from "./AppliedJobTables";
 
 
 
 
 const Profile = () => {
+    useGetAppliedJobs();
     const [open, setOpen] = useState(false);
-    const {user} = useSelector(store => store.auth);
+    const { user } = useSelector(store => store.auth);
     const handleDialogOpen = () => {
         setOpen(true);
     };
@@ -25,13 +27,15 @@ const Profile = () => {
             <div className='max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl my-5 p-8'>
                 <div className='flex justify-between'>
                     <div className='flex items-center gap-4'>
-                        <Avatar className="h-24 w-24">
+                        <Avatar className="h-24 w-24 overflow-hidden rounded-full">
                             <AvatarImage
-                                src={user?.profile?.profilePhoto} alt="profile"
+                                src={user?.profile?.profilePhoto}
+                                alt="profile"
+                                className="h-full w-full object-cover"
                             />
                         </Avatar>
                         <div>
-                            <h1 className='font-medium text-xl'>{user?.fullname }</h1>
+                            <h1 className='font-medium text-xl'>{user?.fullname}</h1>
                             <p>{user?.profile?.bio}</p>
                         </div>
                     </div>
@@ -40,11 +44,11 @@ const Profile = () => {
                 <div className='my-5'>
                     <div className='flex items-center gap-3 my-2'>
                         <Mail />
-                        <span>{user?.email }</span>
+                        <span>{user?.email}</span>
                     </div>
                     <div className='flex items-center gap-3 my-2'>
                         <Contact />
-                        <span>{user?.phoneNumber }</span>
+                        <span>{user?.phoneNumber}</span>
                     </div>
                 </div>
                 <div className='my-5'>
@@ -70,7 +74,7 @@ const Profile = () => {
             </div>
             <div className='max-w-4xl mx-auto bg-white rounded-2xl'>
                 <h1 className='font-bold text-lg my-5'>Applied Jobs</h1>
-                <AppliedJobTables/>
+                <AppliedJobTable />
             </div>
             <UpdateProfileDialog open={open} setOpen={setOpen} />
         </div>

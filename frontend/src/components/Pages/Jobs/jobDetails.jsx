@@ -1,21 +1,23 @@
-
-import { Bookmark } from 'lucide-react'
-import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { useNavigate } from 'react-router-dom'
-
-
-
+import PropTypes from 'prop-types';
+import { Bookmark } from 'lucide-react';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const JobDetails = ({ job }) => {
     const navigate = useNavigate();
+
     const daysAgoFunction = (mongodbTime) => {
         const createdAt = new Date(mongodbTime);
         const currentTime = new Date();
         const difference = currentTime - createdAt;
         return Math.floor(difference / (1000 * 60 * 60 * 24));
     };
+
+    if (!job) {
+        return <div>Job data not available</div>;
+    }
 
     return (
         <div className='p-5 rounded-md shadow-xl bg-white border border-gray-100'>
@@ -51,6 +53,22 @@ const JobDetails = ({ job }) => {
             </div>
         </div>
     );
+};
+
+JobDetails.propTypes = {
+    job: PropTypes.shape({
+        _id: PropTypes.string,
+        createdAt: PropTypes.string,
+        company: PropTypes.shape({
+            name: PropTypes.string,
+            logo: PropTypes.string,
+        }),
+        title: PropTypes.string,
+        description: PropTypes.string,
+        position: PropTypes.string,
+        jobType: PropTypes.string,
+        salary: PropTypes.string,
+    }),
 };
 
 export default JobDetails;

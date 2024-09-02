@@ -62,14 +62,22 @@ const Navbar = () => {
                         ) : (
                             <Popover>
                                 <PopoverTrigger asChild>
-                                    <Avatar className="cursor-pointer">
-                                        <AvatarImage src={user?.profile?.profilePhoto} alt={"User-photo"} />
+                                    <Avatar className=" overflow-hidden rounded-full cursor-pointer">
+                                        <AvatarImage
+                                            src={user?.profile?.profilePhoto}
+                                            alt="profile"
+                                            className="h-full w-full object-cover"
+                                        />
                                     </Avatar>
                                 </PopoverTrigger>
                                 <PopoverContent className="w-83">
                                     <div className="flex items-center gap-2">
-                                        <Avatar className="cursor-pointer">
-                                            <AvatarImage src={user?.profile?.profilePhoto} alt="User-photo" className="h-full w-full object-cover rounded-full" />
+                                        <Avatar className="overflow-hidden rounded-full cursor-pointer">
+                                            <AvatarImage
+                                                src={user?.profile?.profilePhoto}
+                                                alt="profile"
+                                                className="h-full w-full object-cover"
+                                            />
                                         </Avatar>
                                         <div>
                                             <h4 className="font-medium">{user.fullname}</h4>
