@@ -119,8 +119,15 @@ const Login = () => {
                         loading ? <Button className="w-full my-4"><Loader2 className="mr-2 h-4 w-4 animate-spin" />Please wait</Button> : <Button type="submit" className="w-full my-4">Login</Button>
                     }
 
-                    <span className="text-sm">Dont`t have an account? <Link to="/signup" className="text-blue-600">Signup</Link></span>
-                </form>
+                    <span className="text-sm">Dont`t have an account? <Link to="/signup" className="text-blue-600">Signup</Link></span><hr/>
+                    <span className="text-sm text-red-600">
+  To login as Admin/Recruiter: Use Email: <strong>ritiktest@gmail.com</strong> and password: <strong>Ritik@123</strong>
+  <br />
+  As a student: Use Email: <strong>user2test@gmail.com</strong> and password: <strong>User2@123</strong>
+</span>
+
+</form>
+              
             </div>
 
         </>
