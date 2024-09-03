@@ -1,9 +1,9 @@
 import Navbar from "@/components/ui/shared/Navbar";
-import FilterCard from "./filterCard";
 import JobDetails from "./jobDetails";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import FilterCard from "./FilterCard";
 
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
@@ -34,7 +34,7 @@ const Jobs = () => {
             <div className='max-w-7xl mx-auto mt-5'>
                 <div className='flex gap-5'>
                     <div className='w-1/5'>
-                        <FilterCard />
+                        <FilterCard/>
                     </div>
                     {
                         filterJobs.length === 0 ? <span>Job not found</span> : (
