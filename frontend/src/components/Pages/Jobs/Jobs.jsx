@@ -3,7 +3,7 @@ import JobDetails from "./jobDetails";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import FilterCard from "./FilterCard";
+import FilterCard from "../Jobs/FilterCard";
 
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
