@@ -27,4 +27,7 @@ Developed a full-featured Job Portal Application aimed at connecting job seekers
 ![dile](https://github.com/user-attachments/assets/6f4022bb-a16a-426e-a9e4-4294b8032033)
 ## Profile Page 
 ![Screenshot 2024-09-02 102108](https://github.com/user-attachments/assets/0c590a96-39c7-4b0f-b9f2-10cfd2deeef3)
+## Update profile and signup page
+![Screenshot 2024-08-14 085636](https://github.com/user-attachments/assets/999619db-9ba2-4694-bb64-aac3be3fa3dd)
+![Screenshot 2024-08-14 085747](https://github.com/user-attachments/assets/cd1315f2-9b12-49ea-b7d9-24998e8009a3)
 
