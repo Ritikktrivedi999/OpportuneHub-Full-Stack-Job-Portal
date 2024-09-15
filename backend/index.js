@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: 'https://opportune-hub-full-stack-job-portal.vercel.app/',  // Allow requests from your frontend
+  origin: 'https://opportune-hub-full-stack-job-portal.vercel.app',  // Allow requests from your frontend
   credentials: true,                // Allow credentials (cookies, headers, etc.)
 }));
 
