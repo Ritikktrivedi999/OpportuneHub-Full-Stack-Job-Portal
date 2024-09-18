@@ -18,6 +18,7 @@ Developed a full-featured Job Portal Application aimed at connecting job seekers
 *Impact: The application streamlined the job search and application process, leading to enhanced user engagement and satisfaction. This project highlights my ability to develop scalable and user-centric fullstack web applications.
 
 
+
 ## Backend Model
 
 ![dile](https://github.com/user-attachments/assets/4e27737b-cc29-4006-907b-fcae2877a408)
